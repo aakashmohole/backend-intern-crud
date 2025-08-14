@@ -1,0 +1,145 @@
+{
+  "info": {
+    "name": "Backend Intern CRUD API",
+    "_postman_id": "abc12345-6789-1011-1213-abcdef123456",
+    "description": "Postman collection for LawVriksh Blog CRUD API with Auth, Likes, and Comments",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"john\",\n    \"email\": \"john@example.com\",\n    \"password\": \"123456\"\n}"
+            },
+            "url": { "raw": "http://localhost:8000/api/auth/register", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","auth","register"] }
+          }
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/x-www-form-urlencoded" }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "username", "value": "john" },
+                { "key": "password", "value": "123456" }
+              ]
+            },
+            "url": { "raw": "http://localhost:8000/api/auth/login", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","auth","login"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Posts",
+      "item": [
+        {
+          "name": "Create Post",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"First Post\",\n    \"content\": \"This is my first blog post.\"\n}"
+            },
+            "url": { "raw": "http://localhost:8000/api/posts", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","posts"] }
+          }
+        },
+        {
+          "name": "Get All Posts",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:8000/api/posts", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","posts"] }
+          }
+        },
+        {
+          "name": "Get Single Post",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:8000/api/posts/1", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","posts","1"] }
+          }
+        },
+        {
+          "name": "Update Post",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Updated Post\",\n    \"content\": \"Updated blog content.\"\n}"
+            },
+            "url": { "raw": "http://localhost:8000/api/posts/1", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","posts","1"] }
+          }
+        },
+        {
+          "name": "Delete Post",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": { "raw": "http://localhost:8000/api/posts/1", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","posts","1"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Likes & Comments",
+      "item": [
+        {
+          "name": "Like Post",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": { "raw": "http://localhost:8000/api/posts/1/like", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","posts","1","like"] }
+          }
+        },
+        {
+          "name": "Add Comment",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"content\": \"Great post!\"\n}"
+            },
+            "url": { "raw": "http://localhost:8000/api/posts/1/comment", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","posts","1","comment"] }
+          }
+        },
+        {
+          "name": "Get Post Comments",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:8000/api/posts/1/comments", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","posts","1","comments"] }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "token", "value": "" }
+  ]
+}
