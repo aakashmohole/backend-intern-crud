@@ -5,6 +5,11 @@ A blog management backend system built with FastAPI offering CRUD operations, li
 
 ***
 
+## Deployed Link (Additional I also deployed backend on render) 
+ - chech this link - https://backend-intern-crud.onrender.com
+
+
+
 ## Table of Contents
 
 - [Task Overview](#project-overview)
